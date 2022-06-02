@@ -72,7 +72,7 @@ resource "aws_instance" "my_amazon" {
   user_data = templatefile("${path.module}/install_docker_daemon.sh.tpl",
     {
       env    = upper(var.env),
-      prefix = upper(var.prefix)
+      prefix = upper(local.prefix)
     }
   )
 
