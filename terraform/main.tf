@@ -69,6 +69,12 @@ resource "aws_instance" "my_amazon" {
   key_name                    = aws_key_pair.my_key.key_name
   vpc_security_group_ids      = [aws_security_group.my_sg.id]
   associate_public_ip_address = false
+  user_data = templatefile("${path.module}/install_docker_daemon.sh.tpl",
+    {
+      env    = upper(var.env),
+      prefix = upper(var.prefix)
+    }
+  )
 
   lifecycle {
     create_before_destroy = true
