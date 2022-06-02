@@ -1,7 +1,7 @@
 # Instance type
 variable "instance_type" {
   default = {
-    "prod"    = "t3.medium"
+    "prod"    = "t2.medium"
     "test"    = "t3.micro"
     "staging" = "t2.micro"
     "dev"     = "t2.micro"
@@ -16,7 +16,3 @@ variable "env" {
   type        = string
   description = "Deployment Environment"
 }
-
-
-
-

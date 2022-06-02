@@ -1,3 +1,10 @@
+#----------------------------------------------------------
+# CLO835 - Joel Oligario - Assignment #1 
+#
+# Terraform code for EC2 as docker images host
+#
+#----------------------------------------------------------
+
 #  Define the provider
 provider "aws" {
   region = "us-east-1"
@@ -13,6 +20,25 @@ data "aws_ami" "latest_amazon_linux" {
   }
 }
 
+# Provides an Elastic Container Registry Repository (ECR)
+resource "aws_ecr_repository" "ecr1" {
+  name                 = "cats"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+# Provides 2nd Elastic Container Registry Repository (ECR)
+resource "aws_ecr_repository" "ecr2" {
+  name                 = "dogs"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
 
 # Data source for availability zones in us-east-1
 data "aws_availability_zones" "available" {
