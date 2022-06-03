@@ -69,6 +69,7 @@ resource "aws_instance" "my_amazon" {
   key_name                    = aws_key_pair.my_key.key_name
   vpc_security_group_ids      = [aws_security_group.my_sg.id]
   associate_public_ip_address = false
+  iam_instance_profile        = data.aws_iam_instance_profile.lab_profile.name
   user_data = templatefile("${path.module}/install_docker_daemon.sh.tpl",
     {
       env    = upper(var.env),
@@ -87,6 +88,10 @@ resource "aws_instance" "my_amazon" {
   )
 }
 
+data "aws_iam_instance_profile" "lab_profile" {
+  name = "LabInstanceProfile"
+}  
+  
 # Adding SSH key to Amazon EC2
 resource "aws_key_pair" "my_key" {
   key_name   = "assign1"
