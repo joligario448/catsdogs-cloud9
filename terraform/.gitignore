@@ -1,5 +1,8 @@
 .terraform
 .terraform.lock.hcl
-*.pub
 *.tfstate
 *.tfstate.*
+
+# ssh keys
+assign1
+*.pub
