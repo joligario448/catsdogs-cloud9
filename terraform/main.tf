@@ -2,7 +2,7 @@
 #
 # CLO835 - Joel Oligario - Assignment #1 
 #
-# Terraform code to build EC2 as host for runing docker containers
+# Terraform code to build EC2 as host for running docker containers
 #
 #-------------------------------------------------------------------
 
