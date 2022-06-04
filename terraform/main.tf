@@ -1,9 +1,10 @@
-#----------------------------------------------------------
+#-------------------------------------------------------------------
+#
 # CLO835 - Joel Oligario - Assignment #1 
 #
-# Terraform code for EC2 as docker images host
+# Terraform code to build EC2 as host for running docker containers
 #
-#----------------------------------------------------------
+#-------------------------------------------------------------------
 
 #  Define the provider
 provider "aws" {
@@ -105,11 +106,18 @@ resource "aws_security_group" "my_sg" {
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
-    description = "Http from everywhere"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    description      = "Http from everywhere"
+    from_port        = 8080
+    to_port          = 8080
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+   ingress {
+    description      = "Http from everywhere"
+    from_port        = 8081
+    to_port          = 8081
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
   }
 
   ingress {
