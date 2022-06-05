@@ -1,4 +1,4 @@
-name: Deploy catsdogs images to Elastic Container Registry
+name: Deploy catsdogs images to Elastic Container Registry (ECR)
 
 on: 
   push:
